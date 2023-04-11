@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export default function Ranking() {
+export default function NotFound() {
   const NotFound = styled.div``;
   return (
     <NotFound>

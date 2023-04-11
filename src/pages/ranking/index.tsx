@@ -1,16 +1,21 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import styled from 'styled-components';
-import { get } from '../lib/api';
+import { get } from '../../lib/api';
 import {
   ComicRankApiSuccessResponse,
   ComicRankItem,
   isComicRankApiSuccessResponse,
-} from '../types';
+} from '../../types';
+import { useSetRecoilState } from 'recoil';
+import { pageTitleState } from '../../recoil/metaInfo/atoms';
+import List from './List';
 
-const CONST_DEFAULT_GENRE = 'romance';
+const DEFAULT_GENRE_KEY = 'romance';
 
-const PREPARED_GENRE = ['romance', 'drama'];
+const PREPARED_GENRES = [
+  { key: 'romance', displayName: '로맨스' },
+  { key: 'drama', displayName: '드라마' },
+];
 
 export default function Ranking() {
   const [searchParams] = useSearchParams();
@@ -19,14 +24,18 @@ export default function Ranking() {
   const genre = searchParams.get('genre');
   const [comics, setComics] = useState([] as ComicRankItem[]);
   const [page, setPage] = useState(0);
-
-  const Ranking = styled.div``;
+  const setTitle = useSetRecoilState(pageTitleState);
 
   useEffect(() => {
-    if (!genre || !PREPARED_GENRE.includes(genre))
-      navigate({ pathname: '/ranking', search: `?genre=${CONST_DEFAULT_GENRE}` });
-    else setPage(page + 1);
-  }, [genre, navigate]);
+    const validGenre = PREPARED_GENRES.find(prepared_genre => prepared_genre.key === genre);
+    if (!validGenre) {
+      navigate({ pathname: '/ranking', search: `?genre=${DEFAULT_GENRE_KEY}` });
+      setPage(p => 1);
+    } else {
+      setTitle(`${validGenre.displayName} 장르 랭킹`);
+      setPage(p => p + 1);
+    }
+  }, [genre, navigate, setTitle]);
 
   useEffect(() => {
     get({ path: `/api/comics/${genre}`, page: page })
@@ -35,21 +44,10 @@ export default function Ranking() {
         if (isComicRankApiSuccessResponse(parsedResponse)) {
           const comicRankApiSucessResponse: ComicRankApiSuccessResponse = parsedResponse;
           setComics(comicRankApiSucessResponse.data);
-        } else {
-          console.error('Response format invalid');
         }
       })
       .catch(error => console.error(error));
-  }, [page]);
+  }, [page, genre]);
 
-  return (
-    <Ranking className="home">
-      <h1>Here is Ranking</h1>
-      <h2> genre is {genre}</h2>
-      comics count : {comics.length}
-      {comics.map(comic => {
-        return <div>{JSON.stringify(comic)}</div>;
-      })}
-    </Ranking>
-  );
+  return <List comics={comics} />;
 }

@@ -1,31 +1,41 @@
 import React from 'react';
-import MobileLayout from './layout/MobileLayout';
-import styled from 'styled-components';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import { RecoilRoot } from 'recoil';
+
+import styled, { ThemeProvider } from 'styled-components';
+import MobileLayout from './layout/MobileLayout';
 import Home from './pages/Home';
-import Ranking from './pages/Ranking';
+import Ranking from './pages/ranking';
 import NotFound from './pages/NotFound';
+import Header from './components/header';
+import GlobalStyle from './styles/globalStyle';
+import { mobileTheme } from './styles/theme';
+
+const StyledApp = styled.div`
+  background-color: lightgray;
+  height: 100vh;
+`;
 
 function App() {
-  const App = styled.div`
-    background-color: lightgray;
-    height: 100vh;
-  `;
   return (
-    <App className="App">
-      <BrowserRouter>
-        <MobileLayout>
-          <header>
-            <h1>Mobile</h1>
-          </header>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/ranking" element={<Ranking />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </MobileLayout>
-      </BrowserRouter>
-    </App>
+    <StyledApp className="App">
+      <RecoilRoot>
+        <BrowserRouter>
+          <GlobalStyle />
+          <ThemeProvider theme={mobileTheme}>
+            <MobileLayout>
+              <Header />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/ranking" element={<Ranking />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </MobileLayout>
+          </ThemeProvider>
+        </BrowserRouter>
+      </RecoilRoot>
+    </StyledApp>
   );
 }
 
