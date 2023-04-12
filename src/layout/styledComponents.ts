@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const StyledMobileLayout = styled.div`
-  max-width: 650px;
+  width: ${props => props.theme.layoutMeasures.maxWidth};
   background-color: white;
   margin-left: auto;
   margin-right: auto;
-  height: 100vh;
+  height: ${props => props.theme.layoutMeasures.height};
   overflow: auto;
   position: relative;
 `;

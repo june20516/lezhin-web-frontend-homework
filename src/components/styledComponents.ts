@@ -2,13 +2,14 @@ import styled from 'styled-components';
 
 export const StyledHeader = styled.div`
   height: var(--height-mobile-header);
-  width: 100%;
+  width: ${props => props.theme.layoutMeasures.maxWidth};
   position: fixed;
   top: 0;
   background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border-bottom: solid 1px ${props => props.theme.color.gray};
 `;
 
 export const HeaderHolder = styled.div`

@@ -1,10 +1,15 @@
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { RankingButton, StyledHome } from './styledComponents';
 
 export default function Home() {
-  const Home = styled.div``;
   return (
-    <Home className="home">
-      <h1>Here is Home</h1>
-    </Home>
+    <StyledHome className="home">
+      <RankingButton to={{ pathname: '/ranking', search: '?genre=romance' }}>
+        로맨스 랭킹
+      </RankingButton>
+      <RankingButton to={{ pathname: '/ranking', search: '?genre=drama' }}>
+        드라마 랭킹
+      </RankingButton>
+    </StyledHome>
   );
 }
