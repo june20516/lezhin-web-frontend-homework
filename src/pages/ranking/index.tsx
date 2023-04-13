@@ -4,6 +4,7 @@ import { useSetRecoilState } from 'recoil';
 import { pageTitleState } from '../../recoil/metaInfo/atoms';
 import List from './List';
 import { MobilePageHasHeader } from '../../layout/styledComponents';
+import Filter from './filter';
 
 const DEFAULT_GENRE_KEY = 'romance';
 
@@ -30,6 +31,7 @@ export default function Ranking() {
 
   return (
     <MobilePageHasHeader>
+      <Filter></Filter>
       <List genre={genre} />
     </MobilePageHasHeader>
   );
