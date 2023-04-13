@@ -27,7 +27,6 @@ export const RankingButton = styled(Link)`
 `;
 
 export const StyledHome = styled.div`
-  height: calc(100% - var(--height-mobile-header));
   display: flex;
   flex-direction: column;
   justify-content: center;

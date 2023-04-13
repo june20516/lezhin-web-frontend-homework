@@ -23,6 +23,6 @@ export const HeaderTitle = styled.h1`
   padding-left: 1rem;
 `;
 
-export const ListContainer = styled.ul`
+export const ListContainer = styled.div`
   padding: 1rem;
 `;

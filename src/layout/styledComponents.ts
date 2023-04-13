@@ -9,3 +9,9 @@ export const StyledMobileLayout = styled.div`
   overflow: auto;
   position: relative;
 `;
+
+export const MobilePageHasHeader = styled.div`
+  width: 100%;
+  height: calc(${props => props.theme.layoutMeasures.height} - var(--height-mobile-header));
+  overflow: auto;
+`;
