@@ -1,19 +1,18 @@
-import {
-  ComicRankApiSuccessResponse,
-  ComicRankItem,
-  isComicRankApiSuccessResponse,
-} from '../../types';
+import { ComicRankApiSuccessResponse, isComicRankApiSuccessResponse } from '../../types';
 
 import { ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { get } from '../../lib/api';
 
 import { ListContainer } from '../../components/styledComponents';
 import ListItem from './ListItem';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { comicRankItemsState } from '../../recoil/ranking/atoms';
+import { filteredComicRankItemsState } from '../../recoil/ranking/selectors';
 
 export default function List({ genre }: { genre: string }) {
   const [hasNext, setHasNext] = useState(true);
-  const [comics, setComics] = useState<ComicRankItem[]>([]);
-
+  const setComicRankItems = useSetRecoilState(comicRankItemsState);
+  const filteredComicRankItmes = useRecoilValue(filteredComicRankItemsState);
   const loadComicRankItems = useCallback(
     async (page: number) => {
       get({ path: `/api/comics/${genre}`, page: page })
@@ -22,17 +21,17 @@ export default function List({ genre }: { genre: string }) {
           if (isComicRankApiSuccessResponse(parsedResponse)) {
             const comicRankApiSucessResponse: ComicRankApiSuccessResponse = parsedResponse;
             setHasNext(parsedResponse.hasNext);
-            setComics(prev => [...prev, ...comicRankApiSucessResponse.data]);
+            setComicRankItems(prev => [...prev, ...comicRankApiSucessResponse.data]);
           }
         })
         .catch(error => console.log(error));
     },
-    [genre],
+    [genre, setComicRankItems],
   );
 
   return (
     <ListContainer>
-      {comics.map(comic => {
+      {filteredComicRankItmes.map(comic => {
         return <ListItem key={comic.id} comic={comic} />;
       })}
       <InfiniteLoader hasNext={hasNext} loadMore={loadComicRankItems} />

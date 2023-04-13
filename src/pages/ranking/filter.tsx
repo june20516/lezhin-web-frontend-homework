@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
 
 import { FilterContainer, FilterHolder, FilterItem } from '../../components/styledComponents';
+import { useSetRecoilState } from 'recoil';
+import { rankingComicsFilterState } from '../../recoil/ranking/atoms';
 
 export default function Filter() {
   const [isSerialized, setIsSerialized] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
-  const [isFreeTicketMoreThanTree, setIsFreeTicketMoreThanTree] = useState(false);
+  const [isFreeTicketMoreOrTree, setIsFreeTicketMoreOrTree] = useState(false);
   const [isPublishedAsBook, setIsPublishedAsBook] = useState(false);
+  const setFilterItems = useSetRecoilState(rankingComicsFilterState);
 
   const toggleIsSerialized = () => {
     setIsSerialized(!isSerialized);
@@ -15,8 +18,7 @@ export default function Filter() {
     setIsCompleted(!isCompleted);
     if (isCompleted) setIsSerialized(false);
   };
-  const toggleIsFreeTicketMoreThanTree = () =>
-    setIsFreeTicketMoreThanTree(!isFreeTicketMoreThanTree);
+  const toggleIsFreeTicketMoreOrTree = () => setIsFreeTicketMoreOrTree(!isFreeTicketMoreOrTree);
   const toggleIsPublishedAsBook = () => setIsPublishedAsBook(!isPublishedAsBook);
 
   useEffect(() => {
@@ -27,6 +29,15 @@ export default function Filter() {
     if (isCompleted) setIsSerialized(false);
   }, [isCompleted]);
 
+  useEffect(() => {
+    const selectedFilter = [];
+    if (isSerialized) selectedFilter.push('isSericalized');
+    if (isCompleted) selectedFilter.push('isCompleted');
+    if (isFreeTicketMoreOrTree) selectedFilter.push('isFreeTicketMoreOrTree');
+    if (isPublishedAsBook) selectedFilter.push('isPublishedAsBook');
+    setFilterItems(selectedFilter);
+  }, [isCompleted, isFreeTicketMoreOrTree, isPublishedAsBook, isSerialized, setFilterItems]);
+
   return (
     <>
       <FilterContainer>
@@ -36,7 +47,7 @@ export default function Filter() {
         <FilterItem selected={isCompleted} onClick={toggleIsCompleted}>
           완결
         </FilterItem>
-        <FilterItem selected={isFreeTicketMoreThanTree} onClick={toggleIsFreeTicketMoreThanTree}>
+        <FilterItem selected={isFreeTicketMoreOrTree} onClick={toggleIsFreeTicketMoreOrTree}>
           무료회차 3개 이상
         </FilterItem>
         <FilterItem selected={isPublishedAsBook} onClick={toggleIsPublishedAsBook}>
