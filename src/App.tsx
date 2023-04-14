@@ -14,7 +14,7 @@ import { mobileTheme } from './styles/theme';
 
 const StyledApp = styled.div`
   background-color: lightgray;
-  height: 100%;
+  height: 100vh;
 `;
 
 function App() {

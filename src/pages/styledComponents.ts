@@ -31,6 +31,7 @@ export const StyledHome = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 10rem 0 10rem 0;
   & > a {
     margin-bottom: 1rem;
   }

@@ -9,7 +9,7 @@ const mobileFontSize = {
 
 const mobileLayoutMeasures = {
   maxWidth: '500px',
-  height: '100%',
+  height: '100vh',
 };
 
 const color = {
