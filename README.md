@@ -1,46 +1,35 @@
-# Getting Started with Create React App
+# [레진엔터테인먼트] 프론트엔드 과제
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 프로젝트 실행 방법
 
-## Available Scripts
+```shell
+$ yarn // 의존성 설치
+$ yarn server // api 서버 실행
+$ yarn start // web app 실행
+```
 
-In the project directory, you can run:
+## 기술 스택
 
-### `yarn start`
+- create-react-app
+- typescript
+- recoil
+- styled components
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 기술 스택 적용 이유
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+채용 과정에서 과제를 통해 확인하고자 하는 지원자의 역량은 다양한 측면이 있다고 생각합니다.
+그 중에서 제가 어필하고 싶었던 것은 기술에 대한 학습력, 적응력이었습니다.
+레진에서 일하기 위해 당장 필요한 기술들이 저의 커리어에서는 부족하지만, 그 모자람을 채울 수 있는지를 스스로 확인해보고 싶었고 보여줄 수 있다면 보여주고 싶었기 때문입니다.
+따라서 기술 스택 선택 기준을 합리성을 우선으로 생각하지는 않았습니다.
 
-### `yarn test`
+그럼에도 불구하고, 이 과제가 실무라고 생각하여 각 기술들의 선택에 대한 합리성을 말씀드리자면
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. create-react-app : 프로젝트의 boilerplate code 작성 과정을 생략함으로써 한정된 시간을 앞두고 빠르게 작업을 시작할 수 있었습니다.
+2. typescript : 과제에서 타입이 제시되어 있어 추가적인 타입정의 작업없이 적용할 수 있다고 판단했고, 테스트 코드는 작성하지 못하더라도 개발과 디버깅 단계에서 단기 생산성 향상을 가져올 수 생각했습니다.
+3. recoil : 프로젝트 구성이 크거나 복잡하지 않아 가볍게 적용할 수 있는 형상 관리 라이브러리를 선택했습니다.
+4. styled-components : 향후 확장성을 고려하여 재사용 가능한 UIcomponent들을 시스템화할 수 있다는 전제하에 해당 기술을 사용해 봤습니다.
 
-### `yarn build`
+## 맺음말
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+레진에서 일해보고 싶다는 욕심이 스스로에게 강한 동기를 부여해줘서, 목적 의식을 가지고 열심히 공부할 수 있었습니다.
+결과도 좋다면 더 할 나위 없겠지만, 이 자체로도 좋은 경험이었습니다. 감사합니다.
