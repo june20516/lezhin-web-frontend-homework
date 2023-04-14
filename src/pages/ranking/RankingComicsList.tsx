@@ -4,12 +4,12 @@ import { ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 're
 import { get } from '../../lib/api';
 
 import { ListContainer } from '../../components/styledComponents';
-import ListItem from './ListItem';
+import RankingComicsListItem from './RankingComicsListItem';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { comicRankItemsState } from '../../recoil/ranking/atoms';
 import { filteredComicRankItemsState } from '../../recoil/ranking/selectors';
 
-export default function List({ genre }: { genre: string }) {
+export default function RankingComicsList({ genre }: { genre: string }) {
   const [hasNext, setHasNext] = useState(true);
   const setComicRankItems = useSetRecoilState(comicRankItemsState);
   const filteredComicRankItmes = useRecoilValue(filteredComicRankItemsState);
@@ -32,7 +32,7 @@ export default function List({ genre }: { genre: string }) {
   return (
     <ListContainer>
       {filteredComicRankItmes.map(comic => {
-        return <ListItem key={comic.id} comic={comic} />;
+        return <RankingComicsListItem key={comic.id} comic={comic} />;
       })}
       <InfiniteLoader hasNext={hasNext} loadMore={loadComicRankItems} />
     </ListContainer>

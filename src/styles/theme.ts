@@ -1,4 +1,6 @@
 const mobileFontSize = {
+  xs: '0.7rem',
+  sm: '1rem',
   base: '1.125rem',
   md: '1.5rem',
   lg: '1.8rem',
@@ -6,14 +8,15 @@ const mobileFontSize = {
 };
 
 const mobileLayoutMeasures = {
-  maxWidth: '650px',
-  height: '100vh',
+  maxWidth: '500px',
+  height: '100%',
 };
 
 const color = {
   primary: '#DB3832',
   white: '#FFFFFF',
   black: '#000000',
+  darkGray: '#A0A0A0',
   gray: '#E2E3E3',
 };
 

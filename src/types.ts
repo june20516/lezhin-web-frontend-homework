@@ -1,5 +1,5 @@
 // 연재 요일
-type Period = 'MON' | 'TUE' | 'WED' | 'THU' | 'FRI' | 'SAT' | 'SUN';
+export type Period = 'MON' | 'TUE' | 'WED' | 'THU' | 'FRI' | 'SAT' | 'SUN';
 // 작가 롤
 export type ArtistRole = 'writer' | 'painter' | 'scripter' | 'original' | 'publisher' | 'label';
 

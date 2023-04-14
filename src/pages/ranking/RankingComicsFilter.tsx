@@ -4,7 +4,7 @@ import { FilterContainer, FilterHolder, FilterItem } from '../../components/styl
 import { useSetRecoilState } from 'recoil';
 import { rankingComicsFilterState } from '../../recoil/ranking/atoms';
 
-export default function Filter() {
+export default function RankingComicsFilter() {
   const [isSerialized, setIsSerialized] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
   const [isFreeTicketMoreOrTree, setIsFreeTicketMoreOrTree] = useState(false);

@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import { pageTitleState } from '../../recoil/metaInfo/atoms';
-import List from './List';
+import RankingComicsList from './RankingComicsList';
 import { MobilePageHasHeader } from '../../layout/styledComponents';
-import Filter from './filter';
+import RankingComicsFilter from './RankingComicsFilter';
 
 const DEFAULT_GENRE_KEY = 'romance';
 
@@ -31,8 +31,8 @@ export default function Ranking() {
 
   return (
     <MobilePageHasHeader>
-      <Filter></Filter>
-      <List genre={genre} />
+      <RankingComicsFilter></RankingComicsFilter>
+      <RankingComicsList genre={genre} />
     </MobilePageHasHeader>
   );
 }
